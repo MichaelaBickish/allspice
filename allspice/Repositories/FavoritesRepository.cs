@@ -22,9 +22,9 @@ namespace allspice.Repositories
 
     internal Favorite Create(Favorite newfavorite)
     {
-       string sql = @"INSERT INTO favorites 
+      string sql = @"INSERT INTO favorites 
       (accountId, recipeId, id)
-      VALUE(@accountId, @recipeId, @id)
+      VALUE(@accountId, @recipeId, @id) 
       ;SELECT LAST_INSERT_ID();";
 
       int id = _db.ExecuteScalar<int>(sql, newfavorite);
@@ -50,8 +50,8 @@ namespace allspice.Repositories
       string sql = @"SELECT * FROM favorites
       WHERE id = @id
       ;";
-      return _db.QueryFirstOrDefault<Favorite>(sql, new{id});
+      return _db.QueryFirstOrDefault<Favorite>(sql, new { id });
     }
-    
+
   }
 }
